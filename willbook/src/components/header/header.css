@@ -145,3 +145,18 @@
     background-position: 0% 50%;
   }
 }
+@keyframes moveHeader {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.headerTitle,
+.headerDesc {
+  animation: moveHeader 1s ease-out forwards;
+}

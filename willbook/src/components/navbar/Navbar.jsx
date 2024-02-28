@@ -2,7 +2,7 @@ import "./navbar.css";
 
 const Navbar = () => {
   return (
-    <div className="navbar">
+    <div className="navbar gradient-bg">
       <div className="navContainer">
         <span className="logo">WillBook</span>
         <div className="navItems">
