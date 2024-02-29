@@ -69,10 +69,10 @@ const Header = ({ type }) => {
         {type !== "list" && (
           <>
             <h1 className="headerTitle">
-              An Eternity of Savings! It's pure brilliance!
+              Get Happiness of Savings! It's Pure Brilliance!
             </h1>
             <p className="headerDesc">
-              "Get Ready to Ride! Sign Up with wiilbook and Enjoy a Smooth
+              "Get Ready to Ride! Sign Up with WillBook and Enjoy a Smooth
               Journey with a 10% New Account Discount!"
             </p>
             <button className="headerBtn">Sign in / Register</button>
