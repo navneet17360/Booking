@@ -37,6 +37,17 @@ const Featured = () => {
             <h2>123 properties</h2>
           </div>
         </div>
+        <div className="featuredItem">
+          <img
+            src="https://cf.bstatic.com/xdata/images/city/600x600/684653.jpg?k=306ccafcc8a4a7e23b9e8a05b183453fe885b312a4daa5ce76ec39a1b79cbc6f&o="
+            className="featuredImage"
+            alt=""
+          />
+          <div className="featuredTitles">
+            <h1>Hyderabad</h1>
+            <h2>123 properties</h2>
+          </div>
+        </div>
       </div>
     </div>
   );
