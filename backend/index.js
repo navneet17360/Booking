@@ -21,6 +21,19 @@ mongoose.connection.on("disconnected", () => {
 
 //middlewares
 app.use(express.json());
+
+app.use((err, req, res, next) => {
+  //its a specific middleware used for error handling and has to be in this order
+  const errorStatus = err.status || 500;
+  const errorMessage = err.message || "something went wrong";
+  return res.status(500).json({
+    success: false,
+    status: errorStatus,
+    message: errorMessage,
+    stack: err.stack,
+  }); //this will be sent to the client
+});
+
 app.use("/api/auth", authRoute);
 // app.use("/api/users", usersRoute);
 app.use("/api/hotels", hotelsRoute);
@@ -29,4 +42,16 @@ app.use("/api/hotels", hotelsRoute);
 app.listen(5000, () => {
   connect();
   console.log("Connected To Backend");
+});
+
+app.use((err, req, res, next) => {
+  //its a specific middleware used for error handling and has to be in this order
+  const errStatus = err.status || 500;
+  const errMessage = err.message || "something went wrong";
+  return res.status(500).json({
+    success: false,
+    status: errStatus,
+    message: errMessage,
+    stack: err.stack,
+  }); //this will be sent to the client
 });
