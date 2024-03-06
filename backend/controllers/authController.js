@@ -1,5 +1,7 @@
 import User from "../models/User.js";
 import bcrypt from "bcrypt"; //hash the password
+import { createError } from "../utils/error.js";
+import jwt from "jsonwebtoken";
 
 export const register = async (req, res, next) => {
   try {
@@ -12,6 +14,32 @@ export const register = async (req, res, next) => {
     });
     await newUser.save();
     res.status(200).send("user has been created");
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const login = async (req, res, next) => {
+  try {
+    const user = await User.findOne({ username: req.body.username });
+    if (!user) {
+      return next(createError(404, "user not found!"));
+    }
+    const isPasswordCorrect = await bcrypt.compare(
+      req.body.password,
+      user.password
+    );
+    if (!isPasswordCorrect) {
+      return next(createError(400, "username or password is incorrect"));
+    }
+
+    //hide the user info in JWT token and send it as cookies
+
+    const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.JWT_SECRET);
+
+    const { password, isAdmin, ...otherProps } = user._doc;
+
+    res.cookie("access_token",token,{httpOnly:true}).status(200).json({ ...otherProps });
   } catch (err) {
     next(err);
   }
