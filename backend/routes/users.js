@@ -10,8 +10,9 @@ import {
 import { verifyToken } from "../utils/verifyToken.js";
 
 const router = express.Router();
+
 router.get("/checkauthentication", verifyToken, (req, res, next) => {
-  res.send(200).json("hello ,you are logged in");
+  res.status(200).json("hello , you are logged in");
 });
 
 // UPDATE

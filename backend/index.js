@@ -3,8 +3,9 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 //if you are importing libraries you dont need to write extension but if you are using file you have to write extension of file
 import authRoute from "./routes/auth.js";
-// import usersRoute from "./routes/users.js";
+import usersRoute from "./routes/users.js";
 import hotelsRoute from "./routes/hotels.js";
+import roomsRoute from "./routes/rooms.js";
 
 import cookieParser from "cookie-parser";
 const app = express();
@@ -27,9 +28,11 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use("/api/auth", authRoute);
-// app.use("/api/users", usersRoute);
+
 app.use("/api/hotels", hotelsRoute);
-// app.use("/api/rooms", roomsRoute);
+
+app.use("/api/users", usersRoute);
+app.use("/api/rooms", roomsRoute);
 
 app.listen(5000, () => {
   connect();
