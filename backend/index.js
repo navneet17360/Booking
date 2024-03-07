@@ -9,6 +9,7 @@ import hotelsRoute from "./routes/hotels.js";
 import cookieParser from "cookie-parser";
 const app = express();
 dotenv.config();
+
 const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGO);
