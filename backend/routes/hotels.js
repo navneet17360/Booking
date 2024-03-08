@@ -2,6 +2,7 @@ import express from "express";
 import Hotel from "../models/Hotel.js";
 import { createError } from "../utils/error.js";
 import {
+  countByCity,
   createHotel,
   deleteHotel,
   getAllHotels,
@@ -21,7 +22,7 @@ router.put("/:id", verifyAdmin, updateHotel);
 //DELETE
 router.delete("/:id", verifyAdmin, deleteHotel);
 //GET
-router.get("/:id", getHotelById);
+router.get("/find/:id", getHotelById);
 //GET ALL
 router.get(
   "/",
@@ -32,5 +33,7 @@ router.get(
   //   return next(createError(401, "you are not authenticated"));
   // }
 );
+router.get("/countByCity", countByCity);
+router.get("/countByType", getAllHotels);
 
 export default router;
