@@ -3,6 +3,7 @@ import Hotel from "../models/Hotel.js";
 import { createError } from "../utils/error.js";
 import {
   countByCity,
+  countByType,
   createHotel,
   deleteHotel,
   getAllHotels,
@@ -34,6 +35,6 @@ router.get(
   // }
 );
 router.get("/countByCity", countByCity);
-router.get("/countByType", getAllHotels);
+router.get("/countByType", countByType);
 
 export default router;
