@@ -2,7 +2,7 @@ import useFetch from "../../hooks/useFetch";
 import "./featured.css";
 // import { useEffect, useState } from "react";
 // import Skeleton from "react-loading-skeleton";
-import { CircleLoader } from "react-spinners";
+import { CircleLoader, ClipLoader } from "react-spinners";
 
 const Featured = () => {
   const { data, loading, error } = useFetch(
@@ -14,7 +14,11 @@ const Featured = () => {
       <div className="featured">
         {loading ? (
           <div className="spinner">
-            <CircleLoader color={"#123abc"} loading={loading} size={50} />
+            <ClipLoader
+              color={"rgb(8, 144, 126)"}
+              loading={loading}
+              size={50}
+            />
           </div>
         ) : (
           <>

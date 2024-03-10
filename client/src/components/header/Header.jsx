@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
@@ -69,7 +69,12 @@ const Header = ({ type }) => {
           </div>
           <div className="headerListItem">
             <FontAwesomeIcon icon={faHotel} />
-            <span>Hotels</span>
+            <Link
+              to="/hotels"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              <span>Hotels</span>
+            </Link>
           </div>
           <div className="headerListItem">
             <FontAwesomeIcon icon={faBed} />
