@@ -5,7 +5,7 @@ import { DateRange } from "react-date-range";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import SearchItem from "../../components/searchItem/SearchItem";
-import { CircleLoader, ClipLoader } from "react-spinners"; // Import the CircleLoader
+import { ClipLoader } from "react-spinners";
 import "./list.css";
 
 const List = () => {
