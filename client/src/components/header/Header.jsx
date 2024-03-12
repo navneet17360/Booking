@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
@@ -45,6 +47,24 @@ const Header = ({ type }) => {
     }
   };
   const handleSearch = () => {
+    if (
+      !destination ||
+      !date[0].startDate ||
+      !date[0].endDate ||
+      options.adult === 0 ||
+      options.rooms === 0
+    ) {
+      toast.error("Please fill in all required fields", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
+    }
     navigate("/hotels", { state: { destination, date, options } });
   };
   return (
@@ -209,6 +229,7 @@ const Header = ({ type }) => {
           </>
         )}
       </div>
+      <ToastContainer />
     </div>
   );
 };
