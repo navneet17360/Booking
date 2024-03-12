@@ -7,11 +7,14 @@ import Header from "../../components/header/Header";
 import SearchItem from "../../components/searchItem/SearchItem";
 import { ClipLoader } from "react-spinners";
 import "./list.css";
+import useFetch from "../../hooks/useFetch";
 
 const List = () => {
   const location = useLocation();
   const [loading, setLoading] = useState(true); // State for managing loading animation
   const [openDate, setOpenDate] = useState(false);
+  const [min, setMin] = useState(undefined);
+  const [max, setMax] = useState(undefined);
   const [date, setDate] = useState([
     {
       startDate: new Date(),
@@ -52,6 +55,12 @@ const List = () => {
       },
     ]);
   }, [selectedDate]);
+  const { data, reFetch } = useFetch(
+    `/api/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
+  ); ///api/hotels?city=${destination}
+  const handleClick = () => {
+    reFetch();
+  };
 
   return (
     <div>
@@ -125,24 +134,23 @@ const List = () => {
                         type="number"
                         min={1}
                         className="lsOptionInput"
-                        placeholder={options.room}
+                        placeholder={options.rooms}
                       />
                     </div>
                   </div>
                 </div>
-                <button>Search</button>
+                <button onClick={handleClick}>Search</button>
               </div>
               <div className="listResult">
-                {/* Search results */}
-                <SearchItem />
-                <SearchItem />
-                <SearchItem />
-                <SearchItem />
-                <SearchItem />
-                <SearchItem />
-                <SearchItem />
-                <SearchItem />
-                <SearchItem />
+                {loading ? (
+                  "loading"
+                ) : (
+                  <>
+                    {data.map((item) => (
+                      <SearchItem item={item} key={item._id} />
+                    ))}
+                  </>
+                )}
               </div>
             </div>
           </div>
