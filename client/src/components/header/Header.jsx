@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,10 +19,11 @@ import "./header.css";
 
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
+import { SearchContext } from "../../context/SearchContext";
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
   const [showDate, setShowDate] = useState(false);
-  const [date, setDate] = useState([
+  const [dates, setDates] = useState([
     {
       startDate: new Date(),
       endDate: new Date(),
@@ -46,11 +47,14 @@ const Header = ({ type }) => {
       setOptions({ ...options, [name]: options[name] - 1 });
     }
   };
+
+  const { dispatch } = useContext(SearchContext);
+
   const handleSearch = () => {
     if (
       !destination ||
-      !date[0].startDate ||
-      !date[0].endDate ||
+      !dates[0].startDate ||
+      !dates[0].endDate ||
       options.adult === 0 ||
       options.rooms === 0
     ) {
@@ -65,8 +69,10 @@ const Header = ({ type }) => {
       });
       return;
     }
-    navigate("/hotels", { state: { destination, date, options } });
+    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
+    navigate("/hotels", { state: { destination, dates, options } });
   };
+
   return (
     <div className="header gradient-background">
       <div
@@ -130,16 +136,16 @@ const Header = ({ type }) => {
                 <span
                   onClick={() => setShowDate(!showDate)}
                   className="headerSearchText"
-                >{`${format(date[0].startDate, "dd/MM/yyyy")} to ${format(
-                  date[0].endDate,
+                >{`${format(dates[0].startDate, "dd/MM/yyyy")} to ${format(
+                  dates[0].endDate,
                   "dd/MM/yy"
                 )}`}</span>
                 {showDate && (
                   <DateRange
                     editableDateInputs={true}
-                    onChange={(item) => setDate([item.selection])}
+                    onChange={(item) => setDates([item.selection])}
                     moveRangeOnFirstSelection={false}
-                    ranges={date}
+                    ranges={dates}
                     className="date"
                     minDate={new Date()}
                   />
