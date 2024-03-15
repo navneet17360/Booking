@@ -20,6 +20,7 @@ import "./header.css";
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
 import { SearchContext } from "../../context/SearchContext";
+import { AuthContext } from "../../context/AuthContext";
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
   const [showDate, setShowDate] = useState(false);
@@ -39,6 +40,7 @@ const Header = ({ type }) => {
   });
 
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
 
   const handleOption = (name, operations) => {
     if (operations === "positive") {
@@ -120,7 +122,7 @@ const Header = ({ type }) => {
               "Get Ready to Ride! Sign Up with WillBook and Enjoy a Smooth
               Journey with a 10% New Account Discount!"
             </p>
-            <button className="headerBtn">Sign in / Register</button>
+            {!user && <button className="headerBtn">Sign in / Register</button>}
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
