@@ -76,7 +76,7 @@ const Header = ({ type }) => {
   };
 
   return (
-    <div className="header gradient-background">
+    <div className="header Gradient-background">
       <div
         className={
           type === "list" ? "headerContainer listMode" : "headerContainer"

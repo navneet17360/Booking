@@ -14,10 +14,14 @@
 .lInput {
   height: 30px;
   padding: 10px;
+  border-radius: 5px;
+
 }
 
 .lButton {
   border: none;
+  height: max-content;
+  width: max-content;
   padding: 10px 20px;
   background-color: rgb(2, 32, 59);
   color: white;
@@ -31,7 +35,12 @@
   cursor: not-allowed;
 }
 .gradient-background {
-  background: linear-gradient(252deg, rgb(11, 19, 21), rgba(213, 200, 200, 0.041), #0fd2d2);
+  background: linear-gradient(
+    252deg,
+    rgb(11, 19, 21),
+    rgba(213, 200, 200, 0.041),
+    #0fd2d2
+  );
   background-size: 180% 180%;
   animation: gradient-animation 12s ease infinite;
 }

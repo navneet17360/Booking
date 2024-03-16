@@ -14,9 +14,12 @@
 .rInput {
   height: 30px;
   padding: 10px;
+  border-radius: 5px;
 }
 
 .rButton {
+  height: max-content;
+  width: max-content;
   border: none;
   padding: 10px 20px;
   background-color: rgb(2, 32, 59);
