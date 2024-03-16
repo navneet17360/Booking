@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
+
 import { Link } from "react-router-dom";
 
 const Login = () => {
@@ -36,7 +37,7 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
+    <div className="login gradient-background">
       <div className="lContainer">
         <input
           type="text"

@@ -34,7 +34,7 @@ const Register = () => {
   };
 
   return (
-    <div className="register">
+    <div className="register gradient-background">
       <div className="rContainer">
         <input
           type="text"

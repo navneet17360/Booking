@@ -19,7 +19,7 @@
 .lButton {
   border: none;
   padding: 10px 20px;
-  background-color: #0071c2;
+  background-color: rgb(2, 32, 59);
   color: white;
   font-weight: bold;
   cursor: pointer;
@@ -27,6 +27,23 @@
 }
 
 .lButton:disabled {
-  background-color: #0071c28c;
+  background-color: rgb(2, 32, 59);
   cursor: not-allowed;
+}
+.gradient-background {
+  background: linear-gradient(252deg, rgb(11, 19, 21), rgba(213, 200, 200, 0.041), #0fd2d2);
+  background-size: 180% 180%;
+  animation: gradient-animation 12s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
