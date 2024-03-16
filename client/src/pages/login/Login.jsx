@@ -5,6 +5,8 @@ import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
 
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -39,6 +41,7 @@ const Login = () => {
   return (
     <div className="login gradient-background">
       <div className="lContainer">
+      <FontAwesomeIcon icon={faUser} />
         <input
           type="text"
           placeholder="username"
@@ -53,6 +56,7 @@ const Login = () => {
           onChange={handleChange}
           className="lInput"
         />
+        
         <button disabled={loading} onClick={handleClick} className="lButton">
           Login
         </button>

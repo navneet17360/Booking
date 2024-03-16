@@ -3,6 +3,8 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./register.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Register = () => {
   const [credentials, setCredentials] = useState({
@@ -36,6 +38,7 @@ const Register = () => {
   return (
     <div className="register gradient-background">
       <div className="rContainer">
+        <FontAwesomeIcon icon={faUser} />
         <input
           type="text"
           placeholder="username"
