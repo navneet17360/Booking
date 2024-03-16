@@ -15,7 +15,6 @@ const Register = () => {
 
   const { loading, error, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
-
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
@@ -24,7 +23,7 @@ const Register = () => {
     e.preventDefault();
     dispatch({ type: "REGISTER_START" });
     try {
-      const res = await axios.post("/api/auth/register", credentials);
+      const res = await axios.post(`${process.env.BACKEND_URL}/api/auth/register`, credentials);
       dispatch({
         type: "REGISTER_SUCCESS",
         payload: res.data, // Assuming your API returns user data including the username
